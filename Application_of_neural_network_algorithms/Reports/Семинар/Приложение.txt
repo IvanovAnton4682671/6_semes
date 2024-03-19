@@ -1,0 +1,40 @@
+import tensorflow as tf
+from tensorflow.keras import layers, Model
+from tensorflow.keras.losses import ContrastiveLoss
+from tensorflow.keras.optimizers import Adam
+
+# Создание модели сиамской нейронной сети
+def create_siamese_network(input_shape):
+    input_layer = layers.Input(shape=input_shape)
+    x = layers.Dense(128, activation='relu')(input_layer)
+    x = layers.Dense(64, activation='relu')(x)
+    output_layer = layers.Dense(32, activation='relu')(x)
+    
+    model = Model(inputs=input_layer, outputs=output_layer)
+    return model
+
+# Функция для создания пары входных данных для сиамской сети
+def create_pairs(x, y, num_classes):
+    pairs, labels = [], []
+    for i in range(len(x)):
+        for j in range(i+1, len(x)):
+            pairs += [[x[i], x[j]]]
+            if y[i] == y[j]:
+                labels += [1]
+            else:
+                labels += [0]
+    return np.array(pairs), np.array(labels)
+
+# Функция для подготовки данных и обучения модели
+def train_siamese_network(x_train, y_train, input_shape, num_classes, epochs=10):
+    model = create_siamese_network(input_shape)
+    model.compile(optimizer=Adam(), loss=ContrastiveLoss(margin=1.0))
+
+    pairs, labels = create_pairs(x_train, y_train, num_classes)
+    model.fit([pairs[:, 0], pairs[:, 1]], labels, epochs=epochs, batch_size=32)
+
+# Пример использования
+# Предположим, у вас есть данные x_train, y_train и вы хотите обучить сиамскую нейронную сеть
+# input_shape = shape of input data
+# num_classes = number of classes in the dataset
+# train_siamese_network(x_train, y_train, input_shape, num_classes)
