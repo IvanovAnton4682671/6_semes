@@ -1,0 +1,62 @@
+
+TEST CASES
+case	o/s	browser	server	acrobat	pairings
+1	winXP	IE	Apache	installed	6
+2	winXP	netscape	IIS	not installed	6
+3	win2000	IE	IIS	installed	5
+4	win2000	netscape	Apache	not installed	5
+5	winME	IE	ColdFusion	not installed	6
+6	winME	netscape	ColdFusion	installed	5
+7	winXP	Opera	ColdFusion	installed	4
+8	win2000	Opera	Apache	not installed	3
+9	winME	Opera	IIS	~installed	3
+10	win2000	~IE	ColdFusion	~not installed	1
+11	winME	~netscape	Apache	~installed	1
+
+PAIRING DETAILS
+var1	var2	value1	value2	appearances	cases
+o/s	browser	winXP	IE	1	1
+o/s	browser	winXP	netscape	1	2
+o/s	browser	winXP	Opera	1	7
+o/s	browser	win2000	IE	2	3, 10
+o/s	browser	win2000	netscape	1	4
+o/s	browser	win2000	Opera	1	8
+o/s	browser	winME	IE	1	5
+o/s	browser	winME	netscape	2	6, 11
+o/s	browser	winME	Opera	1	9
+o/s	server	winXP	Apache	1	1
+o/s	server	winXP	IIS	1	2
+o/s	server	winXP	ColdFusion	1	7
+o/s	server	win2000	Apache	2	4, 8
+o/s	server	win2000	IIS	1	3
+o/s	server	win2000	ColdFusion	1	10
+o/s	server	winME	Apache	1	11
+o/s	server	winME	IIS	1	9
+o/s	server	winME	ColdFusion	2	5, 6
+o/s	acrobat	winXP	installed	2	1, 7
+o/s	acrobat	winXP	not installed	1	2
+o/s	acrobat	win2000	installed	1	3
+o/s	acrobat	win2000	not installed	3	4, 8, 10
+o/s	acrobat	winME	installed	3	6, 9, 11
+o/s	acrobat	winME	not installed	1	5
+browser	server	IE	Apache	1	1
+browser	server	IE	IIS	1	3
+browser	server	IE	ColdFusion	2	5, 10
+browser	server	netscape	Apache	2	4, 11
+browser	server	netscape	IIS	1	2
+browser	server	netscape	ColdFusion	1	6
+browser	server	Opera	Apache	1	8
+browser	server	Opera	IIS	1	9
+browser	server	Opera	ColdFusion	1	7
+browser	acrobat	IE	installed	2	1, 3
+browser	acrobat	IE	not installed	2	5, 10
+browser	acrobat	netscape	installed	2	6, 11
+browser	acrobat	netscape	not installed	2	2, 4
+browser	acrobat	Opera	installed	2	7, 9
+browser	acrobat	Opera	not installed	1	8
+server	acrobat	Apache	installed	2	1, 11
+server	acrobat	Apache	not installed	2	4, 8
+server	acrobat	IIS	installed	2	3, 9
+server	acrobat	IIS	not installed	1	2
+server	acrobat	ColdFusion	installed	2	6, 7
+server	acrobat	ColdFusion	not installed	2	5, 10
